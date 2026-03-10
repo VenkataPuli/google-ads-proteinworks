@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Google Ads Campaign — Protein Works | Venkat</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0D1B2E;
+    --navy-mid: #162540;
+    --navy-light: #1E3357;
+    --gold: #E8A020;
+    --gold-light: #F2B84B;
+    --cream: #F8F4EE;
+    --cream-dark: #EDE8DF;
+    --text: #1A1A2E;
+    --muted: #6B7280;
+    --white: #ffffff;
+    --tag-bg: rgba(232,160,32,0.12);
+    --card-bg: #ffffff;
+    --border: rgba(13,27,46,0.1);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--navy);
+    position: relative;
+    overflow: hidden;
+    padding: 0;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 80% at 80% 50%, rgba(232,160,32,0.08) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 60% at 10% 80%, rgba(45,93,161,0.3) 0%, transparent 60%);
+  }
+
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  .hero-inner {
+    position: relative;
+    z-index: 2;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 72px 40px 64px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 40px;
+    align-items: start;
+  }
+
+  .hero-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  .eyebrow-line {
+    width: 32px;
+    height: 2px;
+    background: var(--gold);
+  }
+
+  .eyebrow-text {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    color: var(--white);
+    line-height: 1.15;
+    margin-bottom: 10px;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .hero-sub {
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.65);
+    margin-bottom: 32px;
+    max-width: 560px;
+  }
+
+  .hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .meta-pill {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 100px;
+    padding: 6px 14px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.8);
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .meta-pill .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+  }
+
+  .hero-badge {
+    background: rgba(232,160,32,0.15);
+    border: 1px solid rgba(232,160,32,0.35);
+    border-radius: 12px;
+    padding: 20px 22px;
+    text-align: center;
+    min-width: 160px;
+  }
+
+  .badge-icon { font-size: 2rem; margin-bottom: 6px; }
+  .badge-label { font-size: 11px; color: var(--gold); font-family: 'JetBrains Mono', monospace; letter-spacing: 0.08em; text-transform: uppercase; }
+  .badge-value { font-size: 13px; color: rgba(255,255,255,0.9); margin-top: 4px; font-weight: 500; }
+
+  /* ── NAV TABS ── */
+  .nav-strip {
+    background: var(--navy-mid);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .nav-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+  }
+
+  .nav-inner::-webkit-scrollbar { display: none; }
+
+  .nav-tab {
+    padding: 14px 20px;
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.5);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+
+  .nav-tab:hover { color: rgba(255,255,255,0.85); }
+  .nav-tab.active { color: var(--gold); border-bottom-color: var(--gold); }
+
+  /* ── MAIN LAYOUT ── */
+  .main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 56px 40px 80px;
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 48px;
+    align-items: start;
+  }
+
+  /* ── SECTIONS ── */
+  .section { margin-bottom: 52px; }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+
+  .section-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--gold);
+    background: var(--tag-bg);
+    border: 1px solid rgba(232,160,32,0.25);
+    border-radius: 4px;
+    padding: 3px 8px;
+    letter-spacing: 0.05em;
+  }
+
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.55rem;
+    color: var(--navy);
+    line-height: 1.2;
+  }
+
+  .lead {
+    font-size: 0.95rem;
+    color: var(--muted);
+    margin-bottom: 20px;
+    font-style: italic;
+    border-left: 3px solid var(--gold);
+    padding-left: 14px;
+  }
+
+  /* ── CARDS ── */
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 16px;
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+
+  .card:hover {
+    box-shadow: 0 4px 24px rgba(13,27,46,0.08);
+    transform: translateY(-1px);
+  }
+
+  .card-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+
+  .card-title {
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--navy);
+    margin-bottom: 6px;
+  }
+
+  .card-body { font-size: 0.88rem; color: var(--muted); line-height: 1.65; }
+
+  /* ── TIER CARDS ── */
+  .tier-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+
+  .tier-card {
+    border-radius: 12px;
+    padding: 20px 18px;
+    border: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .tier-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+  }
+
+  .tier-black { background: #F9F9FB; }
+  .tier-black::before { background: #3A3A4A; }
+
+  .tier-gold { background: #FFFBF0; border-color: rgba(232,160,32,0.3); }
+  .tier-gold::before { background: var(--gold); }
+
+  .tier-platinum { background: #F6F8FF; border-color: rgba(45,93,161,0.2); }
+  .tier-platinum::before { background: #2D5DA1; }
+
+  .tier-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+  }
+
+  .tier-black .tier-badge { background: #3A3A4A; color: white; }
+  .tier-gold .tier-badge { background: var(--gold); color: white; }
+  .tier-platinum .tier-badge { background: #2D5DA1; color: white; }
+
+  .tier-name { font-size: 0.85rem; font-weight: 600; color: var(--navy); margin-bottom: 4px; }
+  .tier-protein { font-family: 'JetBrains Mono', monospace; font-size: 1.3rem; font-weight: 500; color: var(--navy); }
+  .tier-protein span { font-size: 0.75rem; color: var(--muted); font-family: 'DM Sans', sans-serif; }
+  .tier-desc { font-size: 0.8rem; color: var(--muted); margin-top: 6px; line-height: 1.5; }
+  .tier-best { position: absolute; top: 10px; right: 10px; font-size: 9px; background: var(--gold); color: white; border-radius: 3px; padding: 2px 6px; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.05em; }
+
+  /* ── TABLES ── */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.855rem;
+    margin-bottom: 16px;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+
+  .data-table thead tr {
+    background: var(--navy);
+    color: white;
+  }
+
+  .data-table th {
+    padding: 11px 14px;
+    text-align: left;
+    font-size: 11px;
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .data-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+
+  .data-table tbody tr:nth-child(even) { background: var(--cream); }
+  .data-table tbody tr:last-child td { border-bottom: none; }
+  .data-table tbody tr:hover { background: #EEF2FF; }
+
+  /* ── INTENT BADGES ── */
+  .intent {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+  }
+
+  .intent-very-high { background: #DCFCE7; color: #166534; }
+  .intent-high      { background: #DBEAFE; color: #1E3A8A; }
+  .intent-medium    { background: #FEF9C3; color: #854D0E; }
+  .intent-low       { background: #F3F4F6; color: #6B7280; }
+
+  .match-type {
+    display: inline-block;
+    padding: 2px 7px;
+    border-radius: 4px;
+    font-size: 10px;
+    background: var(--navy);
+    color: white;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* ── AD COPY CARDS ── */
+  .rsa-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 16px;
+  }
+
+  .rsa-header {
+    background: var(--navy);
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .rsa-title { color: white; font-weight: 600; font-size: 0.9rem; }
+  .rsa-tag { font-size: 10px; font-family: 'JetBrains Mono', monospace; background: var(--gold); color: white; padding: 2px 8px; border-radius: 3px; }
+
+  .rsa-body { padding: 16px 20px; }
+
+  .rsa-url {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: #166534;
+    background: #F0FDF4;
+    border: 1px solid #BBF7D0;
+    border-radius: 4px;
+    padding: 5px 10px;
+    margin-bottom: 12px;
+    display: block;
+    word-break: break-all;
+  }
+
+  .headlines-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 12px;
+  }
+
+  .headline-pill {
+    background: #EEF2FF;
+    border: 1px solid #C7D2FE;
+    border-radius: 6px;
+    padding: 4px 10px;
+    font-size: 11.5px;
+    font-weight: 500;
+    color: #3730A3;
+  }
+
+  .desc-box {
+    background: var(--cream);
+    border-left: 3px solid var(--gold);
+    padding: 10px 14px;
+    font-size: 0.855rem;
+    color: var(--muted);
+    line-height: 1.65;
+    border-radius: 0 6px 6px 0;
+  }
+
+  /* ── KPI GRID ── */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .kpi-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .kpi-icon { font-size: 1.6rem; }
+
+  .kpi-label { font-size: 11px; color: var(--muted); font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 2px; }
+  .kpi-target { font-size: 1.25rem; font-weight: 600; color: var(--navy); font-family: 'DM Serif Display', serif; }
+  .kpi-bench { font-size: 10.5px; color: var(--muted); }
+
+  /* ── PHASE TIMELINE ── */
+  .phases {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    position: relative;
+    padding-left: 32px;
+  }
+
+  .phases::before {
+    content: '';
+    position: absolute;
+    left: 10px;
+    top: 18px;
+    bottom: 18px;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--gold), var(--navy));
+  }
+
+  .phase-item {
+    position: relative;
+    padding: 16px 0 16px 20px;
+  }
+
+  .phase-dot {
+    position: absolute;
+    left: -24px;
+    top: 22px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 2px solid white;
+    box-shadow: 0 0 0 2px var(--gold);
+    background: var(--gold);
+  }
+
+  .phase-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--gold); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 4px; }
+  .phase-title { font-weight: 600; font-size: 0.9rem; color: var(--navy); margin-bottom: 4px; }
+  .phase-desc { font-size: 0.83rem; color: var(--muted); line-height: 1.55; }
+
+  /* ── USP LIST ── */
+  .usp-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+
+  .usp-item {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 14px;
+    font-size: 0.875rem;
+    color: var(--text);
+  }
+
+  .usp-icon { font-size: 1rem; flex-shrink: 0; margin-top: 1px; }
+
+  /* ── NEGATIVE KW ── */
+  .neg-list { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+
+  .neg-pill {
+    background: #FEF2F2;
+    border: 1px solid #FECACA;
+    border-radius: 6px;
+    padding: 4px 10px;
+    font-size: 11.5px;
+    color: #991B1B;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* ── SIDEBAR ── */
+  .sidebar { position: sticky; top: 72px; }
+
+  .sidebar-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 16px;
+  }
+
+  .sidebar-header {
+    background: var(--navy);
+    padding: 14px 18px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .sidebar-body { padding: 16px 18px; }
+
+  .sb-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.83rem;
+    gap: 12px;
+  }
+
+  .sb-row:last-child { border-bottom: none; }
+  .sb-key { color: var(--muted); flex-shrink: 0; }
+  .sb-val { font-weight: 600; color: var(--navy); text-align: right; }
+
+  .budget-ring {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .budget-item { display: flex; align-items: center; gap: 10px; font-size: 0.83rem; }
+  .budget-bar-wrap { flex: 1; height: 6px; background: var(--cream-dark); border-radius: 99px; overflow: hidden; }
+  .budget-bar { height: 100%; border-radius: 99px; }
+  .budget-label { color: var(--muted); min-width: 80px; }
+  .budget-pct { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--navy); font-weight: 500; }
+
+  .skills-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+
+  .skill-tag {
+    background: var(--tag-bg);
+    border: 1px solid rgba(232,160,32,0.25);
+    border-radius: 6px;
+    padding: 4px 10px;
+    font-size: 11px;
+    color: #92400E;
+    font-weight: 500;
+  }
+
+  /* ── COMPETITOR TABLE ── */
+  .comp-row { display: flex; gap: 12px; align-items: flex-start; padding: 12px 0; border-bottom: 1px solid var(--border); }
+  .comp-row:last-child { border-bottom: none; }
+  .comp-name { font-weight: 600; font-size: 0.88rem; color: var(--navy); min-width: 110px; }
+  .comp-vs { font-size: 0.82rem; color: var(--muted); flex: 1; line-height: 1.5; }
+  .comp-adv { font-size: 0.82rem; color: #166534; flex: 1; line-height: 1.5; }
+
+  /* ── PRICING ── */
+  .price-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); border-radius: 10px; overflow: hidden; border: 1px solid var(--border); margin-bottom: 8px; }
+
+  .price-col { background: white; }
+  .price-col-header { background: var(--navy); color: white; text-align: center; padding: 8px 4px; font-size: 11px; font-family: 'JetBrains Mono', monospace; }
+
+  .price-cell { text-align: center; padding: 9px 4px; font-size: 0.83rem; color: var(--navy); font-weight: 500; border-bottom: 1px solid var(--border); }
+  .price-cell:last-child { border-bottom: none; }
+  .price-tier-label { font-size: 10px; color: var(--muted); font-family: 'JetBrains Mono', monospace; display: block; margin-bottom: 1px; }
+
+  /* ── EXTENSION CARDS ── */
+  .ext-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+  .ext-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 16px;
+  }
+
+  .ext-type { font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gold); margin-bottom: 6px; }
+  .ext-content { font-size: 0.83rem; color: var(--text); margin-bottom: 6px; line-height: 1.5; }
+  .ext-purpose { font-size: 0.78rem; color: var(--muted); font-style: italic; line-height: 1.45; }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: var(--navy);
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    padding: 32px 40px;
+    font-size: 0.83rem;
+  }
+
+  .footer strong { color: var(--gold); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .section { animation: fadeUp 0.5s ease both; }
+  .section:nth-child(1) { animation-delay: 0.05s; }
+  .section:nth-child(2) { animation-delay: 0.1s; }
+  .section:nth-child(3) { animation-delay: 0.15s; }
+  .section:nth-child(4) { animation-delay: 0.2s; }
+  .section:nth-child(5) { animation-delay: 0.25s; }
+  .section:nth-child(6) { animation-delay: 0.3s; }
+  .section:nth-child(7) { animation-delay: 0.35s; }
+
+  @media (max-width: 860px) {
+    .main { grid-template-columns: 1fr; }
+    .sidebar { position: static; }
+    .tier-grid { grid-template-columns: 1fr; }
+    .kpi-grid { grid-template-columns: 1fr; }
+    .ext-grid { grid-template-columns: 1fr; }
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-badge { display: none; }
+    .main { padding: 32px 20px 60px; }
+    .hero-inner { padding: 48px 20px 40px; }
+    .nav-inner { padding: 0 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow">
+        <div class="eyebrow-line"></div>
+        <span class="eyebrow-text">Portfolio Project · March 2026</span>
+      </div>
+      <h1>Google Ads Search Campaign<br><em>Protein Works</em></h1>
+      <p class="hero-sub">End-to-end paid search strategy built on live competitor research — keyword planning, RSA copywriting, phased smart bidding & KPI framework for a UK supplements brand.</p>
+      <div class="hero-meta">
+        <span class="meta-pill"><span class="dot"></span>Google Ads</span>
+        <span class="meta-pill"><span class="dot"></span>E-Commerce</span>
+        <span class="meta-pill"><span class="dot"></span>UK Market</span>
+        <span class="meta-pill"><span class="dot"></span>£2,000 / month budget</span>
+        <span class="meta-pill"><span class="dot"></span>Live Research · Mar 2026</span>
+      </div>
+    </div>
+    <div class="hero-badge">
+      <div class="badge-icon">🎓</div>
+      <div class="badge-label">Certificate</div>
+      <div class="badge-value">Google Digital Marketing &amp; E-Commerce</div>
+    </div>
+  </div>
+</header>
+
+<!-- NAV -->
+<nav class="nav-strip">
+  <div class="nav-inner">
+    <a class="nav-tab active" href="#brand">Brand Analysis</a>
+    <a class="nav-tab" href="#overview">Campaign</a>
+    <a class="nav-tab" href="#keywords">Keywords</a>
+    <a class="nav-tab" href="#adcopy">Ad Copy</a>
+    <a class="nav-tab" href="#extensions">Extensions</a>
+    <a class="nav-tab" href="#bidding">Bidding</a>
+    <a class="nav-tab" href="#kpis">KPIs</a>
+  </div>
+</nav>
+
+<!-- MAIN -->
+<div class="main">
+<div class="content">
+
+  <!-- RESEARCH NOTE -->
+  <div class="card" style="background:#FFFBF0; border-color:rgba(232,160,32,0.35); margin-bottom:36px;">
+    <div class="card-label">📋 Research Note</div>
+    <p class="card-body">This campaign plan is built on <strong style="color:var(--navy)">live website research conducted in March 2026</strong>. Product names, pricing, and range details were sourced directly from <em>theproteinworks.com</em> and Amazon UK. Keyword volumes and CPC ranges reflect Google Ads Keyword Planner benchmark data for the UK health &amp; supplements sector (April 2024–March 2025). All figures should be validated in Google Ads Keyword Planner before campaign launch.</p>
+  </div>
+
+  <!-- SECTION 1 -->
+  <section class="section" id="brand">
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <h2 class="section-title">Brand &amp; Product Analysis</h2>
+    </div>
+    <p class="lead">Before building the campaign, I audited the Protein Works website and Amazon UK listings to understand their actual vegan range, pricing tiers, and current positioning.</p>
+
+    <h3 style="font-size:1rem; font-weight:600; color:var(--navy); margin-bottom:12px;">Vegan Protein 360 — Three-Tier Structure</h3>
+    <div class="tier-grid">
+      <div class="tier-card tier-black">
+        <span class="tier-badge">Entry</span>
+        <div class="tier-name">Vegan Protein 360 — BLACK</div>
+        <div class="tier-protein">&gt;20g <span>protein/serving</span></div>
+        <div class="tier-desc">Best value, classic formula. Under 95 cals/serving, &lt;1g sugar.</div>
+      </div>
+      <div class="tier-card tier-gold">
+        <span class="tier-badge">Mid</span>
+        <span class="tier-best">BESTSELLER</span>
+        <div class="tier-name">Vegan Protein 360 — GOLD</div>
+        <div class="tier-protein">26g <span>protein/serving</span></div>
+        <div class="tier-desc">5-source protein blend. DigeZyme enzymes. Chocolate Bueno, Millionaire Shortbread.</div>
+      </div>
+      <div class="tier-card tier-platinum">
+        <span class="tier-badge">Premium</span>
+        <div class="tier-name">Vegan Protein 360 — PLATINUM</div>
+        <div class="tier-protein">29g <span>protein/serving</span></div>
+        <div class="tier-desc">5-source blend + vitamin &amp; mineral complex. 98% positive reviews.</div>
+      </div>
+    </div>
+
+    <div class="card" style="background:#F0FDF4; border-color:#BBF7D0; margin-bottom:20px;">
+      <div class="card-label">💡 Campaign Insight</div>
+      <p class="card-body">The <strong style="color:var(--navy)">GOLD tier</strong> is the bestseller and most reviewed — it should anchor all generic ad groups as it balances value with premium credentials. <strong style="color:var(--navy)">PLATINUM</strong> should feature in branded/high-intent ad groups where buyers are already sold on the brand.</p>
+    </div>
+
+    <h3 style="font-size:1rem; font-weight:600; color:var(--navy); margin-bottom:12px;">Real Pricing (March 2026)</h3>
+    <table class="data-table">
+      <thead>
+        <tr><th>Product</th><th>500g</th><th>1kg</th><th>2kg</th><th>4kg</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>BLACK</strong></td><td>£18.99</td><td>£28</td><td>£45</td><td>£75</td></tr>
+        <tr><td><strong>GOLD ⭐</strong></td><td>£22</td><td>£34</td><td>£55</td><td>£95</td></tr>
+        <tr><td><strong>PLATINUM</strong></td><td>£22</td><td>£35</td><td>£60</td><td>£100+</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:11px; color:var(--muted); font-style:italic; margin-bottom:20px;">Note: Site regularly runs 40–65% off promotional sales — pricing is subject to frequent discounting.</p>
+
+    <h3 style="font-size:1rem; font-weight:600; color:var(--navy); margin-bottom:12px;">Key USPs Identified from Website Research</h3>
+    <ul class="usp-list">
+      <li class="usp-item"><span class="usp-icon">🌱</span> Multi-source protein blends: up to 5 plant proteins for a complete amino acid profile</li>
+      <li class="usp-item"><span class="usp-icon">🍫</span> Flavour innovation: Chocolate Bueno, Millionaire Shortbread, Salted Caramel — a significant competitive differentiator</li>
+      <li class="usp-item"><span class="usp-icon">⚗️</span> DigeZyme digestive enzyme blend (GOLD tier) — reduces bloating, a common vegan protein complaint</li>
+      <li class="usp-item"><span class="usp-icon">📋</span> Transparent nutrition: brand explicitly promotes full ingredient disclosure</li>
+      <li class="usp-item"><span class="usp-icon">🚚</span> Free delivery over £60 | Klarna available | Sample packs from £3.99</li>
+      <li class="usp-item"><span class="usp-icon">🎓</span> Student &amp; key worker discounts via Unidays, Student Beans, EDiU</li>
+    </ul>
+
+    <h3 style="font-size:1rem; font-weight:600; color:var(--navy); margin:20px 0 12px;">Competitor Landscape</h3>
+    <div class="card" style="padding:0 20px;">
+      <div class="comp-row" style="padding-top:16px;">
+        <span class="comp-name" style="font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--muted); min-width:110px;">Competitor</span>
+        <span class="comp-vs" style="font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--muted);">Their Positioning</span>
+        <span class="comp-adv" style="font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--muted);">Protein Works Advantage</span>
+      </div>
+      <div class="comp-row">
+        <span class="comp-name">MyProtein</span>
+        <span class="comp-vs">Market leader, lowest price, mass-market</span>
+        <span class="comp-adv">Better flavour range, premium ingredients, DigeZyme</span>
+      </div>
+      <div class="comp-row">
+        <span class="comp-name">Bulk Powders</span>
+        <span class="comp-vs">Value-focused, large range</span>
+        <span class="comp-adv">Stronger taste reviews &amp; brand trust</span>
+      </div>
+      <div class="comp-row">
+        <span class="comp-name">Huel</span>
+        <span class="comp-vs">Meal replacement angle, strong brand</span>
+        <span class="comp-adv">More flavours &amp; lower entry price</span>
+      </div>
+      <div class="comp-row">
+        <span class="comp-name">PhD Nutrition</span>
+        <span class="comp-vs">Sports performance, gym-focused</span>
+        <span class="comp-adv">Vegan range tailored to plant-based lifestyle</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2 -->
+  <section class="section" id="overview">
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <h2 class="section-title">Campaign Overview</h2>
+    </div>
+    <table class="data-table">
+      <tbody>
+        <tr><td style="font-weight:600; width:160px;">Brand</td><td>Protein Works — theproteinworks.com</td></tr>
+        <tr><td style="font-weight:600;">Campaign Type</td><td>Google Ads — Search Campaign</td></tr>
+        <tr><td style="font-weight:600;">Product Focus</td><td>Vegan Protein 360 range (all three tiers; hero product: GOLD)</td></tr>
+        <tr><td style="font-weight:600;">Target Market</td><td>UK — 18–45 year olds; vegan athletes &amp; health-conscious flexitarians</td></tr>
+        <tr><td style="font-weight:600;">Campaign Duration</td><td>6 weeks (April–May 2026)</td></tr>
+        <tr><td style="font-weight:600;">Monthly Budget</td><td>£2,000 (reflecting real supplement CPCs of £0.80–£1.60 for generic terms)</td></tr>
+        <tr><td style="font-weight:600;">Primary Goal</td><td>Drive purchases of Vegan Protein 360 GOLD (1kg &amp; 2kg bags)</td></tr>
+        <tr><td style="font-weight:600;">Secondary Goal</td><td>Push sample pack sign-ups for first-time buyers</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- SECTION 3 -->
+  <section class="section" id="keywords">
+    <div class="section-header">
+      <span class="section-num">03</span>
+      <h2 class="section-title">Keyword Strategy</h2>
+    </div>
+    <p class="lead">Keyword volumes sourced from Google Ads Keyword Planner benchmarks for the UK (April 2024–March 2025). All keywords chosen to reflect actual Protein Works product names and real competitor comparisons buyers are making.</p>
+
+    <h3 style="font-size:0.95rem; font-weight:600; color:var(--navy); margin-bottom:10px;">Ad Group 1 — Branded / Product-Specific</h3>
+    <table class="data-table">
+      <thead><tr><th>Keyword</th><th>Match Type</th><th>Est. CPC</th><th>Intent</th></tr></thead>
+      <tbody>
+        <tr><td>the protein works vegan protein</td><td><span class="match-type">Exact</span></td><td>£0.30–£0.60</td><td><span class="intent intent-very-high">Very High</span></td></tr>
+        <tr><td>protein works vegan protein 360</td><td><span class="match-type">Exact</span></td><td>£0.35–£0.65</td><td><span class="intent intent-very-high">Very High</span></td></tr>
+        <tr><td>protein works vegan platinum</td><td><span class="match-type">Phrase</span></td><td>£0.40–£0.70</td><td><span class="intent intent-very-high">Very High</span></td></tr>
+        <tr><td>protein works vegan review</td><td><span class="match-type">Phrase</span></td><td>£0.25–£0.50</td><td><span class="intent intent-high">High</span></td></tr>
+        <tr><td>protein works chocolate bueno vegan</td><td><span class="match-type">Phrase</span></td><td>£0.30–£0.55</td><td><span class="intent intent-high">High</span></td></tr>
+      </tbody>
+    </table>
+
+    <h3 style="font-size:0.95rem; font-weight:600; color:var(--navy); margin:16px 0 10px;">Ad Group 2 — Generic Vegan Protein</h3>
+    <table class="data-table">
+      <thead><tr><th>Keyword</th><th>Match Type</th><th>Est. CPC</th><th>Intent</th></tr></thead>
+      <tbody>
+        <tr><td>vegan protein powder uk</td><td><span class="match-type">Phrase</span></td><td>£0.80–£1.40</td><td><span class="intent intent-high">High</span></td></tr>
+        <tr><td>best plant based protein powder</td><td><span class="match-type">Phrase</span></td><td>£0.90–£1.60</td><td><span class="intent intent-medium">Medium</span></td></tr>
+        <tr><td>vegan protein shake uk</td><td><span class="match-type">Phrase</span></td><td>£0.70–£1.20</td><td><span class="intent intent-medium">Medium</span></td></tr>
+        <tr><td>dairy free protein powder</td><td><span class="match-type">Phrase</span></td><td>£0.75–£1.30</td><td><span class="intent intent-medium">Medium</span></td></tr>
+        <tr><td>pea protein powder uk</td><td><span class="match-type">Exact</span></td><td>£0.60–£1.10</td><td><span class="intent intent-high">High</span></td></tr>
+        <tr><td>vegan protein 29g per serving</td><td><span class="match-type">Phrase</span></td><td>£0.55–£0.95</td><td><span class="intent intent-high">High</span></td></tr>
+      </tbody>
+    </table>
+
+    <h3 style="font-size:0.95rem; font-weight:600; color:var(--navy); margin:16px 0 10px;">Ad Group 3 — Comparison / Research Intent</h3>
+    <table class="data-table">
+      <thead><tr><th>Keyword</th><th>Match Type</th><th>Est. CPC</th><th>Intent</th></tr></thead>
+      <tbody>
+        <tr><td>vegan protein powder comparison uk</td><td><span class="match-type">Phrase</span></td><td>£0.50–£0.85</td><td><span class="intent intent-low">Low-Med</span></td></tr>
+        <tr><td>myprotein vs protein works vegan</td><td><span class="match-type">Phrase</span></td><td>£0.45–£0.80</td><td><span class="intent intent-medium">Medium</span></td></tr>
+        <tr><td>bulk powders vegan vs protein works</td><td><span class="match-type">Phrase</span></td><td>£0.40–£0.75</td><td><span class="intent intent-medium">Medium</span></td></tr>
+        <tr><td>best vegan protein uk 2025</td><td><span class="match-type">Phrase</span></td><td>£0.85–£1.50</td><td><span class="intent intent-low">Low-Med</span></td></tr>
+      </tbody>
+    </table>
+
+    <h3 style="font-size:0.95rem; font-weight:600; color:var(--navy); margin:16px 0 10px;">Negative Keywords (Campaign Level)</h3>
+    <div class="neg-list">
+      <span class="neg-pill">whey</span>
+      <span class="neg-pill">casein</span>
+      <span class="neg-pill">egg</span>
+      <span class="neg-pill">free</span>
+      <span class="neg-pill">homemade</span>
+      <span class="neg-pill">recipe</span>
+      <span class="neg-pill">jobs</span>
+      <span class="neg-pill">careers</span>
+      <span class="neg-pill">wholesale</span>
+      <span class="neg-pill">collagen</span>
+      <span class="neg-pill">omega</span>
+      <span class="neg-pill">creatine</span>
+      <span class="neg-pill">weight loss meal</span>
+    </div>
+    <p style="font-size:11.5px; color:var(--muted); font-style:italic;">Applied at campaign level — informed by Protein Works' actual product range to avoid cannibalisation and irrelevant spend.</p>
+  </section>
+
+  <!-- SECTION 4 -->
+  <section class="section" id="adcopy">
+    <div class="section-header">
+      <span class="section-num">04</span>
+      <h2 class="section-title">Ad Copy — RSAs</h2>
+    </div>
+    <p class="lead">Every headline references something real from the product or brand — the three-tier 360 range, DigeZyme, unique flavours, free delivery threshold.</p>
+
+    <div class="rsa-card">
+      <div class="rsa-header">
+        <span class="rsa-title">RSA 1 — Branded / High Intent</span>
+        <span class="rsa-tag">Ad Group 1</span>
+      </div>
+      <div class="rsa-body">
+        <span class="rsa-url">theproteinworks.com/vegan-protein-360-shakes</span>
+        <div class="headlines-grid">
+          <span class="headline-pill">Protein Works Vegan Protein 360</span>
+          <span class="headline-pill">Official Protein Works Store</span>
+          <span class="headline-pill">GOLD, PLATINUM &amp; BLACK — Find Yours</span>
+          <span class="headline-pill">Up to 29g Protein Per Serving</span>
+          <span class="headline-pill">Chocolate Bueno — Vegan Protein</span>
+          <span class="headline-pill">Free UK Delivery Over £60</span>
+          <span class="headline-pill">DigeZyme Blend — No Bloating</span>
+          <span class="headline-pill">UK-Made, 100% Plant-Based</span>
+          <span class="headline-pill">Try a Sample Pack First</span>
+          <span class="headline-pill">500,000+ Customers Trust PW</span>
+        </div>
+        <div class="desc-box">Protein Works Vegan Protein 360 — three tiers of science-backed plant protein to suit your goals and budget. 5-source formula with DigeZyme for easy digestion. Choose GOLD for our bestselling formula, or PLATINUM for the highest protein content at up to 29g per serving. Free delivery over £60. Klarna available.</div>
+      </div>
+    </div>
+
+    <div class="rsa-card">
+      <div class="rsa-header">
+        <span class="rsa-title">RSA 2 — Generic Vegan Protein</span>
+        <span class="rsa-tag">Ad Group 2</span>
+      </div>
+      <div class="rsa-body">
+        <span class="rsa-url">theproteinworks.com/vegan-protein-360-shakes · utm_campaign=vegan-generic</span>
+        <div class="headlines-grid">
+          <span class="headline-pill">Vegan Protein Powder — UK-Made</span>
+          <span class="headline-pill">5 Plant Proteins In Every Scoop</span>
+          <span class="headline-pill">Chocolate Bueno Vegan Protein</span>
+          <span class="headline-pill">Dairy-Free, No Bloating — DigeZyme</span>
+          <span class="headline-pill">From £18.99 — Free Delivery Over £60</span>
+          <span class="headline-pill">GOLD, BLACK &amp; PLATINUM Tiers</span>
+          <span class="headline-pill">10,000+ 5-Star Reviews</span>
+          <span class="headline-pill">Try a Sample First — Risk Free</span>
+        </div>
+        <div class="desc-box">Get up to 29g of plant-based protein per serving from Protein Works' multi-award-winning Vegan Protein 360. Unlike single-source powders, our 5-protein blend delivers a complete amino acid profile. No bloating. Choose from 20+ flavours including Chocolate Bueno and Millionaire Shortbread.</div>
+      </div>
+    </div>
+
+    <div class="rsa-card">
+      <div class="rsa-header">
+        <span class="rsa-title">RSA 3 — Comparison / Research Intent</span>
+        <span class="rsa-tag">Ad Group 3</span>
+      </div>
+      <div class="rsa-body">
+        <span class="rsa-url">theproteinworks.com/vegan-protein-360-shakes · utm_campaign=vegan-comparison</span>
+        <div class="headlines-grid">
+          <span class="headline-pill">Better Than MyProtein Vegan?</span>
+          <span class="headline-pill">See Why 500,000+ Chose Protein Works</span>
+          <span class="headline-pill">More Flavours. More Protein. Less Bloat.</span>
+          <span class="headline-pill">5-Source Blend vs Single-Source</span>
+          <span class="headline-pill">UK-Made vs Imported — Compare</span>
+          <span class="headline-pill">DigeZyme — The Ingredient Others Skip</span>
+          <span class="headline-pill">Try a Sample Pack — £3.99</span>
+          <span class="headline-pill">98% Positive Reviews — Vegan Platinum</span>
+        </div>
+        <div class="desc-box">Comparing vegan protein powders? Protein Works GOLD delivers 26g of plant protein from 5 sources, DigeZyme for digestion, and 20+ flavours your taste buds will actually enjoy. Most plant proteins use a single source. Ours uses five — for a complete amino acid profile without the chalky taste. Try a sample pack from just £3.99.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5 -->
+  <section class="section" id="extensions">
+    <div class="section-header">
+      <span class="section-num">05</span>
+      <h2 class="section-title">Ad Extensions</h2>
+    </div>
+    <p class="lead">Extensions updated to reflect real current offers and site structure from theproteinworks.com (March 2026).</p>
+
+    <div class="ext-grid">
+      <div class="ext-card">
+        <div class="ext-type">🔗 Sitelink</div>
+        <div class="ext-content">Shop Vegan Protein 360 · Try a Sample Pack · Vegan Diet Meal 360 · Clear Vegan Protein</div>
+        <div class="ext-purpose">Direct buyers to relevant product sub-pages based on their need</div>
+      </div>
+      <div class="ext-card">
+        <div class="ext-type">📣 Callout</div>
+        <div class="ext-content">Free Delivery Over £60 · UK-Made in Cheshire · DigeZyme Formula · 20+ Flavours · Klarna Available</div>
+        <div class="ext-purpose">Surface USPs without requiring a click — improves Quality Score</div>
+      </div>
+      <div class="ext-card">
+        <div class="ext-type">📋 Structured Snippet</div>
+        <div class="ext-content">Flavours: Chocolate Bueno, Vanilla, Strawberry, Millionaire Shortbread, Salted Caramel, Unflavoured</div>
+        <div class="ext-purpose">Showcases flavour differentiation directly in the SERP</div>
+      </div>
+      <div class="ext-card">
+        <div class="ext-type">🏷️ Promotion</div>
+        <div class="ext-content">Try a Sample Pack From £3.99 — Risk-Free First Order</div>
+        <div class="ext-purpose">Lowers first-purchase barrier; sample packs listed on site</div>
+      </div>
+      <div class="ext-card">
+        <div class="ext-type">💷 Price</div>
+        <div class="ext-content">BLACK 500g from £18.99 · GOLD 1kg from £34 · PLATINUM 1kg from £35</div>
+        <div class="ext-purpose">Sets price expectations; discourages low-intent clicks</div>
+      </div>
+      <div class="ext-card">
+        <div class="ext-type">🖼️ Image</div>
+        <div class="ext-content">Product flat-lay shots of pouches — Chocolate Bueno GOLD variant</div>
+        <div class="ext-purpose">Visual trust signal in SERP; particularly effective on mobile</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 6 -->
+  <section class="section" id="bidding">
+    <div class="section-header">
+      <span class="section-num">06</span>
+      <h2 class="section-title">Bidding Strategy</h2>
+    </div>
+    <p class="lead">Based on real supplement sector CPC data (Google Ads Benchmarks 2025), a phased approach is recommended. The supplements sector requires at least 30 conversions before Smart Bidding performs reliably.</p>
+
+    <div class="phases">
+      <div class="phase-item">
+        <div class="phase-dot"></div>
+        <div class="phase-label">Weeks 1–2 · Phase 1</div>
+        <div class="phase-title">Maximise Clicks</div>
+        <div class="phase-desc">Max CPC caps: £0.70 branded / £1.50 generic. Goal: gather impression and click data without overspending.</div>
+      </div>
+      <div class="phase-item">
+        <div class="phase-dot"></div>
+        <div class="phase-label">Weeks 3–4 · Phase 2</div>
+        <div class="phase-title">Maximise Conversions</div>
+        <div class="phase-desc">Remove max CPC caps once first purchases are recorded. Monitor CPA closely.</div>
+      </div>
+      <div class="phase-item">
+        <div class="phase-dot"></div>
+        <div class="phase-label">Weeks 5–6+ · Phase 3</div>
+        <div class="phase-title">Target ROAS — 350–400%</div>
+        <div class="phase-desc">Requires 30+ conversions for algorithm to perform reliably. Lower target initially to allow learning. Avg. order value estimated at £35–£55 based on 1kg/2kg bag prices.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 7 -->
+  <section class="section" id="kpis">
+    <div class="section-header">
+      <span class="section-num">07</span>
+      <h2 class="section-title">KPIs &amp; Success Metrics</h2>
+    </div>
+    <p class="lead">KPI targets benchmarked against the 2025 Google Ads health &amp; personal care sector averages (CTR: 6.66%, CVR: ~3.2%, CPC: £3–4.50). Branded terms should significantly outperform these.</p>
+
+    <div class="kpi-grid">
+      <div class="kpi-card"><span class="kpi-icon">📈</span><div><div class="kpi-label">CTR — Branded</div><div class="kpi-target">≥8%</div><div class="kpi-bench">Benchmark: 6.66% avg</div></div></div>
+      <div class="kpi-card"><span class="kpi-icon">📊</span><div><div class="kpi-label">CTR — Generic</div><div class="kpi-target">≥5%</div><div class="kpi-bench">Benchmark: 6.66% avg</div></div></div>
+      <div class="kpi-card"><span class="kpi-icon">🛒</span><div><div class="kpi-label">Conversion Rate</div><div class="kpi-target">≥3%</div><div class="kpi-bench">Benchmark: ~3.2% health sector</div></div></div>
+      <div class="kpi-card"><span class="kpi-icon">💷</span><div><div class="kpi-label">CPA (Cost Per Sale)</div><div class="kpi-target">&lt;£20</div><div class="kpi-bench">Reviewed weekly via Google Ads</div></div></div>
+      <div class="kpi-card"><span class="kpi-icon">📉</span><div><div class="kpi-label">ROAS</div><div class="kpi-target">≥350%</div><div class="kpi-bench">Target for Phase 3</div></div></div>
+      <div class="kpi-card"><span class="kpi-icon">🎯</span><div><div class="kpi-label">Branded Impression Share</div><div class="kpi-target">≥85%</div><div class="kpi-bench">Competitor bidding risk</div></div></div>
+      <div class="kpi-card"><span class="kpi-icon">⭐</span><div><div class="kpi-label">Quality Score (avg.)</div><div class="kpi-target">≥7/10</div><div class="kpi-bench">Reviewed weekly</div></div></div>
+      <div class="kpi-card"><span class="kpi-icon">📦</span><div><div class="kpi-label">Sample Pack Conversions</div><div class="kpi-target">≥50/mo</div><div class="kpi-bench">First-time buyer KPI via GA4</div></div></div>
+    </div>
+  </section>
+
+</div>
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+
+  <div class="sidebar-card">
+    <div class="sidebar-header">Campaign Snapshot</div>
+    <div class="sidebar-body">
+      <div class="sb-row"><span class="sb-key">Brand</span><span class="sb-val">Protein Works</span></div>
+      <div class="sb-row"><span class="sb-key">Market</span><span class="sb-val">UK</span></div>
+      <div class="sb-row"><span class="sb-key">Budget</span><span class="sb-val">£2,000 / month</span></div>
+      <div class="sb-row"><span class="sb-key">Duration</span><span class="sb-val">6 weeks</span></div>
+      <div class="sb-row"><span class="sb-key">Ad Groups</span><span class="sb-val">3</span></div>
+      <div class="sb-row"><span class="sb-key">Target ROAS</span><span class="sb-val">350–400%</span></div>
+      <div class="sb-row"><span class="sb-key">Research Date</span><span class="sb-val">March 2026</span></div>
+    </div>
+  </div>
+
+  <div class="sidebar-card">
+    <div class="sidebar-header">Budget Split</div>
+    <div class="sidebar-body">
+      <div class="budget-ring">
+        <div class="budget-item">
+          <span class="budget-label">Branded</span>
+          <div class="budget-bar-wrap"><div class="budget-bar" style="width:30%; background:var(--gold);"></div></div>
+          <span class="budget-pct">30% · £600</span>
+        </div>
+        <div class="budget-item">
+          <span class="budget-label">Generic</span>
+          <div class="budget-bar-wrap"><div class="budget-bar" style="width:55%; background:#2D5DA1;"></div></div>
+          <span class="budget-pct">55% · £1,100</span>
+        </div>
+        <div class="budget-item">
+          <span class="budget-label">Comparison</span>
+          <div class="budget-bar-wrap"><div class="budget-bar" style="width:15%; background:#6B7280;"></div></div>
+          <span class="budget-pct">15% · £300</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sidebar-card">
+    <div class="sidebar-header">Skills Demonstrated</div>
+    <div class="sidebar-body">
+      <div class="skills-tags">
+        <span class="skill-tag">Google Ads</span>
+        <span class="skill-tag">Keyword Research</span>
+        <span class="skill-tag">RSA Copywriting</span>
+        <span class="skill-tag">Smart Bidding</span>
+        <span class="skill-tag">Competitor Analysis</span>
+        <span class="skill-tag">KPI Framework</span>
+        <span class="skill-tag">Live Research</span>
+        <span class="skill-tag">E-Commerce</span>
+        <span class="skill-tag">UK Market</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="sidebar-card">
+    <div class="sidebar-header">Tools &amp; Sources</div>
+    <div class="sidebar-body">
+      <div class="sb-row"><span class="sb-key">Platform</span><span class="sb-val">Google Ads</span></div>
+      <div class="sb-row"><span class="sb-key">Analytics</span><span class="sb-val">GA4</span></div>
+      <div class="sb-row"><span class="sb-key">Research</span><span class="sb-val">Live site audit</span></div>
+      <div class="sb-row"><span class="sb-key">Benchmarks</span><span class="sb-val">Google Ads 2025</span></div>
+      <div class="sb-row"><span class="sb-key">Marketplace</span><span class="sb-val">Amazon UK</span></div>
+    </div>
+  </div>
+
+</aside>
+</div>
+
+<footer class="footer">
+  <p>Prepared by <strong>Venkat</strong> · Google Digital Marketing &amp; E-Commerce Professional Certificate · March 2026</p>
+  <p style="margin-top:6px; font-size:11px;">Research sourced from theproteinworks.com, Amazon UK &amp; Google Ads Keyword Planner Benchmarks 2025</p>
+</footer>
+
+<script>
+  // Active nav tab on scroll
+  const tabs = document.querySelectorAll('.nav-tab');
+  const sections = document.querySelectorAll('section[id]');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        tabs.forEach(t => t.classList.remove('active'));
+        const active = document.querySelector(`.nav-tab[href="#${e.target.id}"]`);
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-30% 0px -60% 0px' });
+
+  sections.forEach(s => observer.observe(s));
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', e => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>
